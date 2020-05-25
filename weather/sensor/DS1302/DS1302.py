@@ -21,7 +21,7 @@ class DS1302:
         self.cs  = cs
         self.clk.init(Pin.OUT)
         self.cs.init(Pin.OUT)
-        
+
     def DecToHex(self, dat):
         return (dat//10) * 16 + (dat%10)
 
@@ -61,7 +61,7 @@ class DS1302:
         self.setReg(DS1302_REG_WP, 0)
         self.setReg(reg, dat)
         self.setReg(DS1302_REG_WP, 0x80)
-                
+
     def start(self):
         t = self.getReg(DS1302_REG_SECOND + 1)
         self.wr(DS1302_REG_SECOND, t & 0x7f)
@@ -69,7 +69,7 @@ class DS1302:
     def stop(self):
         t = self.getReg(DS1302_REG_SECOND + 1)
         self.wr(DS1302_REG_SECOND, t | 0x80)
-        
+
     def Second(self, second = None):
         if second == None:
             return self.HexToDec(self.getReg(DS1302_REG_SECOND+1))%60
