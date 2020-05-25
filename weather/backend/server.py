@@ -14,18 +14,19 @@ class PostHandler(BaseHTTPRequestHandler):
         self.end_headers()
         time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         form['time'] = time_str
-        print('{}: Temperature: {:3.1f} C, Humidity: {:3.1f} %'.format(time_str, form['t'], form['h']))
+        print('{}: T1: {:3.1f}C, T2: {:3.2f}C, H: {:3.1f} %, P: {:d}Pa'.format(
+            time_str, form['t1'], form['t2'], form['h'], form['p']))
         writer(form)
 
 
 def writer(form):
-    file_name = '~/data.csv'
+    file_name = 'data.csv'
     if not os.path.exists(file_name):
         with open(file_name, 'w') as f:
-            f.write('time,temperature,humidity\n')
+            f.write('time,t1,t2,humidity,p\n')
             print('Create success.')
     with open(file_name, 'a') as f:
-        f.write('{},{},{}\n'.format(form['time'], form['t'], form['h']))
+        f.write('{},{},{},{},{}\n'.format(form['time'], form['t1'], form['t2'], form['h'], form['p']))
         print('Write success.')
 
 
