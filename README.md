@@ -17,7 +17,15 @@ Or use *Thonny* IDE.
 
 ## ESP-12F
 
-![](./images/esp-12f.png)
+###
+
+![](./images/3.jpg)
+
+![](./images/1.jpg)
+
+![](./images/2.jpg)
+
+![](./images/esp-12f.jpg)
 
 ## Server
 
